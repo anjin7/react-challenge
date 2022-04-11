@@ -23,7 +23,7 @@ const Header = styled.header`
 const ToggleBtn = styled.button`
   position: absolute;
   top: 16px;
-  right: 0%;
+  right: 0;
   width: 100px;
   background-color: ${(props) => props.theme.btnBgColor};
   color: ${(props) => props.theme.btnTxtColor};

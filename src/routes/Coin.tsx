@@ -6,6 +6,7 @@ import {
   useLocation,
   useParams,
   useRouteMatch,
+  useHistory,
 } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -34,6 +35,18 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+`;
+const BackBtn = styled.button`
+  position: absolute;
+  top: 16px;
+  left: 0;
+  width: 60px;
+  background-color: ${(props) => props.theme.btnBgColor};
+  color: ${(props) => props.theme.btnTxtColor};
+  border-radius: 4px;
+  margin-bottom: 12px;
+  border: 1px solid #9c88ff;
 `;
 
 const Overview = styled.div`
@@ -158,6 +171,9 @@ function Coin() {
     }
   );
   const loading = infoLoading || tickersLoading;
+
+  let history = useHistory();
+  const setGoBack = () => { history.goBack() };
   return (
     <Container>
       <Helmet>
@@ -169,6 +185,7 @@ function Coin() {
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
+        <BackBtn onClick={setGoBack}>🠔back</BackBtn>
       </Header>
       {loading ? (
         <Loader>Loading...</Loader>
