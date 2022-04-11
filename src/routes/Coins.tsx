@@ -17,6 +17,19 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+`;
+
+const ToggleBtn = styled.button`
+  position: absolute;
+  top: 16px;
+  right: 0%;
+  width: 100px;
+  background-color: ${(props) => props.theme.btnBgColor};
+  color: ${(props) => props.theme.btnTxtColor};
+  border-radius: 4px;
+  margin-bottom: 12px;
+  border: 1px solid #9c88ff;
 `;
 
 const CoinsList = styled.ul``;
@@ -78,7 +91,7 @@ function Coins() {
       </Helmet>
       <Header>
         <Title>Coins</Title>
-        <button onClick={toggleDarkAtom}>Toggle Mode</button>
+        <ToggleBtn onClick={toggleDarkAtom}>Toggle Mode</ToggleBtn>
       </Header>
         {isLoading ? (
         <Loader>Loading...</Loader>
