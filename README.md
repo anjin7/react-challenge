@@ -2,4 +2,4 @@
 
 React JS Master Class Challenge
 
-https://anjin7.github.io/react-challenge/coin/
+https://anjin7.github.io/react-challenge/
