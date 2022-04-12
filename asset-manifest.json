@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/react-challenge/coin/static/js/main.63e0ad3f.js",
-    "index.html": "/react-challenge/coin/index.html",
-    "main.63e0ad3f.js.map": "/react-challenge/coin/static/js/main.63e0ad3f.js.map"
+    "main.js": "/react-challenge/static/js/main.3e2b0d6a.js",
+    "index.html": "/react-challenge/index.html",
+    "main.3e2b0d6a.js.map": "/react-challenge/static/js/main.3e2b0d6a.js.map"
   },
   "entrypoints": [
-    "static/js/main.63e0ad3f.js"
+    "static/js/main.3e2b0d6a.js"
   ]
 }
