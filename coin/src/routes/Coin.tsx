@@ -172,7 +172,7 @@ function Coin() {
   );
   const loading = infoLoading || tickersLoading;
 
-  let history = useHistory();
+  const history = useHistory();
   const setGoBack = () => { history.goBack() };
   return (
     <Container>
