@@ -13,6 +13,8 @@ import styled from "styled-components";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
 import Chart from "./Chart";
 import Price from "./Price";
+import { useSetRecoilState } from "recoil";
+import { isDarkAtom } from "../atoms";
 
 const Title = styled.h1`
   font-size: 48px;
@@ -48,11 +50,22 @@ const BackBtn = styled.button`
   margin-bottom: 12px;
   border: 1px solid #9c88ff;
 `;
+const ToggleBtn = styled.button`
+  position: absolute;
+  top: 16px;
+  right: 0;
+  width: 100px;
+  background-color: ${(props) => props.theme.btnBgColor};
+  color: ${(props) => props.theme.btnTxtColor};
+  border-radius: 4px;
+  margin-bottom: 12px;
+  border: 1px solid #9c88ff;
+`;
 
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.35);
   padding: 10px 20px;
   border-radius: 10px;
 `;
@@ -84,7 +97,7 @@ const Tab = styled.span<{ isActive: boolean }>`
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 400;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.35);
   border-radius: 10px;
   color: ${(props) =>
     props.isActive ? props.theme.accentColor : props.theme.textColor};
@@ -174,6 +187,9 @@ function Coin() {
 
   const history = useHistory();
   const setGoBack = () => { history.goBack() };
+
+  const setDarkAtom = useSetRecoilState(isDarkAtom);
+  const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
   return (
     <Container>
       <Helmet>
@@ -186,6 +202,7 @@ function Coin() {
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
         <BackBtn onClick={setGoBack}>🠔back</BackBtn>
+        <ToggleBtn onClick={toggleDarkAtom}>Toggle Mode</ToggleBtn>
       </Header>
       {loading ? (
         <Loader>Loading...</Loader>
