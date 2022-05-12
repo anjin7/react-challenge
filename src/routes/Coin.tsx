@@ -44,22 +44,30 @@ const BackBtn = styled.button`
   top: 16px;
   left: 0;
   width: 60px;
-  background-color: ${(props) => props.theme.btnBgColor};
-  color: ${(props) => props.theme.btnTxtColor};
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.accentColor};
   border-radius: 4px;
   margin-bottom: 12px;
-  border: 1px solid #9c88ff;
+  border: 1px solid ${(props) => props.theme.accentColor};
+  &:hover {
+    color: ${(props) => props.theme.textColor};
+    border: 1px solid ${(props) => props.theme.textColor};
+  }
 `;
 const ToggleBtn = styled.button`
   position: absolute;
   top: 16px;
   right: 0;
   width: 100px;
-  background-color: ${(props) => props.theme.btnBgColor};
-  color: ${(props) => props.theme.btnTxtColor};
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.accentColor};
   border-radius: 4px;
   margin-bottom: 12px;
-  border: 1px solid #9c88ff;
+  border: 1px solid ${(props) => props.theme.accentColor};
+  &:hover {
+    color: ${(props) => props.theme.textColor};
+    border: 1px solid ${(props) => props.theme.textColor};
+  }
 `;
 
 const Overview = styled.div`
