@@ -70,9 +70,9 @@ function Chart({ coinId }: ChartProps) {
             },
             fill: {
               type: "gradient",
-              gradient: { gradientToColors: ["#0be881"], stops: [0, 100] },
+              gradient: { gradientToColors: ["#ff6eec"], stops: [0, 100] },
             },
-            colors: ["#0fbcf9"],
+            colors: ["#40b9ff"],
             tooltip: {
               y: {
                 formatter: (value) => `$${value.toFixed(2)}`,
