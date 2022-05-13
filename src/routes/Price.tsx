@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import { fetchCoinTickers } from "../api";
-import { useRecoilValue } from "recoil";
-import { isDarkAtom } from "../atoms";
+// import { useRecoilValue } from "recoil";
+// import { isDarkAtom } from "../atoms";
 
 interface PriceProps {
   coinId: string;
@@ -41,8 +41,6 @@ interface PriceData {
 };
 
 function Price({ coinId }: PriceProps) {
-  const isDark = useRecoilValue(isDarkAtom);
-
   const { isLoading, data: tickersData } = useQuery<PriceData>(
     ["tickers", coinId],
     () => fetchCoinTickers(coinId),
