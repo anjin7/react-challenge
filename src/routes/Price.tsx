@@ -1,7 +1,35 @@
 import { useQuery } from "react-query";
+import styled from 'styled-components';
 import { fetchCoinTickers } from "../api";
-// import { useRecoilValue } from "recoil";
-// import { isDarkAtom } from "../atoms";
+
+const Container = styled.div`
+  padding: 0px 20px;
+  max-width: 480px;
+  margin: 0 auto;
+`;
+
+const PriceList = styled.ul`
+`;
+
+const Data = styled.li`
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.textColor};
+  padding: 12px 36px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  border: 1px solid white;
+  `;
+
+const DataTitle = styled.h3`
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: ${props => props.theme.accentColor};
+`;
+
+const CoinData = styled.div`
+  font-size: 16px;
+  color: ${props => props.theme.textColor};
+`;
 
 interface PriceProps {
   coinId: string;
@@ -53,10 +81,31 @@ function Price({ coinId }: PriceProps) {
       {isLoading ? (
         "Loading price..."
       ) : (
-          <div>
-            <span>Price : </span>
-            <span>{tickersData?.quotes?.USD?.price?.toFixed(3)}</span>
-          </div>      
+          <Container>
+            <PriceList>              
+              <Data>
+                <DataTitle>Market Cap</DataTitle>
+                <CoinData>$ {tickersData?.quotes?.USD?.market_cap}</CoinData>
+              </Data>
+              <Data>
+                <DataTitle>Volume (24h)</DataTitle>
+                <CoinData>$ {tickersData?.quotes?.USD?.volume_24h?.toFixed(3)}</CoinData>
+              </Data>
+              <Data>
+                <DataTitle>Percent Change (6h)</DataTitle>
+                <CoinData>{tickersData?.quotes?.USD?.percent_change_6h?.toFixed(2)} %</CoinData>
+              </Data>
+              <Data>
+                <DataTitle>Percent Change (24h)</DataTitle>
+                <CoinData>{tickersData?.quotes?.USD?.percent_change_24h?.toFixed(2)} %</CoinData>
+              </Data>
+              <Data>
+                <DataTitle>Percent Change (7d)</DataTitle>
+                <CoinData>{tickersData?.quotes?.USD?.percent_change_7d?.toFixed(2)} %</CoinData>
+              </Data>
+            </PriceList>
+            
+          </Container>      
       )}
     </div>
   );
