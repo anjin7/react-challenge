@@ -37,7 +37,7 @@ function Chart({ coinId }: ChartProps) {
           type="candlestick"
           series={[
             {
-              data: data?.map((price) => [new Date(price.time_open).getTime(), price.open, price.high, price.low, price.close]) as any
+              data: data?.map((price) => [new Date(price.time_open).getTime(), price.open.toFixed(3), price.high.toFixed(3), price.low.toFixed(3), price.close.toFixed(3)]) as any
             },
           ]}
           options={{
@@ -46,7 +46,7 @@ function Chart({ coinId }: ChartProps) {
             },
             chart: {
               type: "candlestick",
-              height: 360,
+              height: 350,
               width: 500,
               toolbar: {
                 show:false,
@@ -67,16 +67,12 @@ function Chart({ coinId }: ChartProps) {
             plotOptions: {
               candlestick: {
                 colors: {
-                  upward: '#3cc2eb',
-                  downward: '#e92c55'
+                  upward: '#40b9ff',
+                  downward: '#ff6eec'
                 }
               }
             },
-            tooltip: {
-              y: {
-                formatter: (value) => `$${value.toFixed(2)}`,
-              },
-            },
+            
           }}
         />
         // <ApexChart

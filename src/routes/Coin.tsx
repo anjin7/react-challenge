@@ -213,7 +213,7 @@ function Coin() {
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
-        <BackBtn onClick={goHome}>🠔back</BackBtn>
+        <BackBtn onClick={goHome}>← back</BackBtn>
         <ToggleBtn onClick={toggleDarkAtom}>Toggle Mode</ToggleBtn>
       </Header>
       {loading ? (
