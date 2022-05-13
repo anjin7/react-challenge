@@ -49,6 +49,7 @@ const BackBtn = styled.button`
   border-radius: 4px;
   margin-bottom: 12px;
   border: 1px solid ${(props) => props.theme.accentColor};
+  transition: color 0.2s ease-in;
   &:hover {
     color: ${(props) => props.theme.textColor};
     border: 1px solid ${(props) => props.theme.textColor};
@@ -64,6 +65,7 @@ const ToggleBtn = styled.button`
   border-radius: 4px;
   margin-bottom: 12px;
   border: 1px solid ${(props) => props.theme.accentColor};
+  transition: color 0.2s ease-in;
   &:hover {
     color: ${(props) => props.theme.textColor};
     border: 1px solid ${(props) => props.theme.textColor};
@@ -196,7 +198,7 @@ function Coin() {
   const loading = infoLoading || tickersLoading;
 
   const history = useHistory();
-  const setGoBack = () => { history.goBack() };
+  const goHome = () => { history.push('/') };
 
   const setDarkAtom = useSetRecoilState(isDarkAtom);
   const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
@@ -211,7 +213,7 @@ function Coin() {
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
-        <BackBtn onClick={setGoBack}>🠔back</BackBtn>
+        <BackBtn onClick={goHome}>🠔back</BackBtn>
         <ToggleBtn onClick={toggleDarkAtom}>Toggle Mode</ToggleBtn>
       </Header>
       {loading ? (

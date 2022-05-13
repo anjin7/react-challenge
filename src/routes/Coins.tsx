@@ -30,6 +30,7 @@ const ToggleBtn = styled.button`
   border-radius: 4px;
   margin-bottom: 12px;
   border: 1px solid ${(props) => props.theme.accentColor};
+  transition: color 0.2s ease-in;
   &:hover {
     color: ${(props) => props.theme.textColor};
     border: 1px solid ${(props) => props.theme.textColor};
