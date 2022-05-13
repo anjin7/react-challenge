@@ -33,12 +33,11 @@ function Chart({ coinId }: ChartProps) {
       {isLoading ? (
         "Loading chart..."
       ) : (
-        <ApexChart
-          type="line"
+          <ApexChart
+          type="candlestick"
           series={[
             {
-              name: "Price",
-              data: data?.map((price => price.close)) ?? [],
+              data: data?.map((price) => [new Date(price.time_open).getTime(), price.open, price.high, price.low, price.close]) as any
             },
           ]}
           options={{
@@ -46,17 +45,13 @@ function Chart({ coinId }: ChartProps) {
               mode: isDark ? "dark" : "light",
             },
             chart: {
-              height: 300,
+              type: "candlestick",
+              height: 360,
               width: 500,
               toolbar: {
-                show: false,
+                show:false,
               },
               background: "transparent",
-            },
-            grid: { show: false },
-            stroke: {
-              curve: "smooth",
-              width: 4,
             },
             yaxis: {
               show: false,
@@ -67,12 +62,16 @@ function Chart({ coinId }: ChartProps) {
               labels: { show: false },
               type: "datetime",
               categories: data?.map((price) => price.time_close),
+              
             },
-            fill: {
-              type: "gradient",
-              gradient: { gradientToColors: ["#ff6eec"], stops: [0, 100] },
+            plotOptions: {
+              candlestick: {
+                colors: {
+                  upward: '#3cc2eb',
+                  downward: '#e92c55'
+                }
+              }
             },
-            colors: ["#40b9ff"],
             tooltip: {
               y: {
                 formatter: (value) => `$${value.toFixed(2)}`,
@@ -80,6 +79,53 @@ function Chart({ coinId }: ChartProps) {
             },
           }}
         />
+        // <ApexChart
+        //   type="line"
+        //   series={[
+        //     {
+        //       name: "Price",
+        //       data: data?.map((price => price.close)) ?? [],
+        //     },
+        //   ]}
+        //   options={{
+        //     theme: {
+        //       mode: isDark ? "dark" : "light",
+        //     },
+        //     chart: {
+        //       height: 300,
+        //       width: 500,
+        //       toolbar: {
+        //         show: false,
+        //       },
+        //       background: "transparent",
+        //     },
+        //     grid: { show: false },
+        //     stroke: {
+        //       curve: "smooth",
+        //       width: 4,
+        //     },
+        //     yaxis: {
+        //       show: false,
+        //     },
+        //     xaxis: {
+        //       axisBorder: { show: false },
+        //       axisTicks: { show: false },
+        //       labels: { show: false },
+        //       type: "datetime",
+        //       categories: data?.map((price) => price.time_close),
+        //     },
+        //     fill: {
+        //       type: "gradient",
+        //       gradient: { gradientToColors: ["#ff6eec"], stops: [0, 100] },
+        //     },
+        //     colors: ["#40b9ff"],
+        //     tooltip: {
+        //       y: {
+        //         formatter: (value) => `$${value.toFixed(2)}`,
+        //       },
+        //     },
+        //   }}
+        // />
       )}
     </div>
   );
